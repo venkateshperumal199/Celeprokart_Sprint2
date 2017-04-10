@@ -1,0 +1,52 @@
+<html>
+<HEAD>
+	  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">	
+	<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	<script type="text/javascript">
+	app=angular.module('app',[]);
+	app.controller('MyCtrl',function($scope,$http){
+		$scope.addData = function(){
+		$http.post("addProductDB.jsp?Category=" + $scope.Category + "&SellOrDonate=" + $scope.SellOrDonate + "&Price=" + $scope.Price + "&Charity=" + $scope.Charity + "&ProductName="+ $scope.ProductName + "&image=" + $scope.image)
+		.success(function(response){
+			m
+			})
+		.error(function(){
+		});
+	}
+	});
+</script>
+</HEAD>
+<body ng-app="app">
+
+<div ng-controller="MyCtrl">
+<h1>SELL/DONATE</h1>
+Name:*<input type="text" name="ProductName" ng-model="ProductName" required/><br/><br/>
+Category:*<select name="Category" id="selectboxid_category" ng-model="Category" required>
+					<option value="Sports">Sports</option>
+					<option value="Electronic Gadgets">Electronic Gadgets</option>
+					<option value="Clothes">Clothes</option>
+					<option value="Accessories">Accessories</option>
+					<option value="Musical Instruments">Musical Instruments</option>
+					<option value="Handmade">Handmade</option>
+				</select><br/><br/>
+Sell/Donate:*<select name="SellOrDonate" id="selectboxid_sellDonate" ng-model="SellOrDonate" required>
+					<option value="Sell">Sell</option>
+					<option value="Donate">Donate</option>
+				</select><br/><br/>
+Price:*<input type="text" name="Price" ng-model="Price" required/>USD<br/><br/>
+Charity:*<select name="Charity" id="selectboxid_Charity" ng-model="Charity" required>
+					<option value="Charity1">Charity1</option>
+					<option value="Charity2">Charity2</option>
+				</select><br/><br/>
+Image:*<input type="file" name="image" ng-model="image"/>
+<br/><br/>
+
+<input type="submit" value="Add Product" ng-click="addData()"/>
+
+<img src=/>
+
+</div>
+
+</body>
+
+</html>

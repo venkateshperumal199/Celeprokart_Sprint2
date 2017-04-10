@@ -1,0 +1,31 @@
+<html ng-app="app">
+<HEAD>
+	<meta charset="utf-8">
+	<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
+	<script type="text/javascript">
+	app=angular.module('app',[]);
+	app.controller('MyCtrl',function($scope,$http){
+		$http.get("getJSONData.jsp?sqlStr=select name from products")
+		.success(function(response){
+			$scope.celebData=response;
+			})
+		.error(function(){
+		});
+	});
+	</script>
+</HEAD>
+<body ng-controller="MyCtrl">
+<ul  ng-repeat = "celeb in celebData">
+    <li>
+     {{celeb.NAME}}
+     
+    </li>
+ 	<li>
+ 	
+ 	
+ 	<img scr={{celeb.IMAGE}} />
+ 	
+ 	</li>
+  </ul>	
+</body>
+</html>
